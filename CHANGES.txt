@@ -1,0 +1,118 @@
+Changes for release 0.7.1
+==========================
+
+bugs fixed
+----------
+[SWP-73] xquery doesn't work for query results
+
+Changes for release 0.7.0
+=========================
+New Features
+------------
+[2009-03-06] added link from results page to show pipe in editor
+[2009-03-06] changed default http cache time from 1 minute to 5 minutes.
+[2009-03-06] Honour HTTP Expires header if longer than default http cache time.
+
+bugs fixed
+----------
+[SWP-68] redirect not followed by rdffetch
+
+Changes for release 0.6.7
+===========================
+New Features
+------------
+[2009-03-05] added linked data demonstration implementing the use case 
+described at http://www.opencalais.com/node/9501
+[2009-03-04] Added pipes:call function to xquery.
+usage is like:
+ pipes:call("myppipe","param1name",param1value,"param2name",param2value ... ) 
+
+
+Bugs Fixed
+[SWP-57] clicking play on Parameter node throws an Exception
+[SWP-58] For Variable debug play button does nothing
+[SWP-64] add blank rdf/xml when dropping in Text node.
+[SWP-65] default xquery text is not well formed
+
+Other Changes
+[2009-03-05] Moved pipes-guide to html document, doc/index.html
+[2009-03-05] Merged older pipes documentation from web page into doc/index.html (some requires updating)
+
+Changes for release 0.6.6
+===========================
+New Features
+------------
+[2009-03-04] Added sesame xpath functions library including concat, lowercase and uppercase
+Example query using fn:concat follows:
+PREFIX fn: <http://www.w3.org/2005/xpath-functions#>
+select ?name where {?s ?p ?name .
+FILTER ( ?name=fn:concat('Giovanni ','Tummarello') )
+}
+See:
+http://repo.aduna-software.org/svn/org.openrdf/sesame-ext/xpath-functions/trunk/src/main/java/org/openrdf/query/algebra/evaluation/function/xpath/
+
+[2009-03-03] Added link to documentation page from each operator on design page.
+Clicking the link opens the documentation page on another tab. Documentation is
+currently skeletal.
+
+[2009-03-03] Added a Choose (if/then/else) operator. This allows one or another
+input to be selected based on whether a condition is true. Some basic conditions
+have been provided including:
+Not Empty - is true if the input is not empty.
+Matches - is true if the source (converted to a string) matches a regular expression.
+Comparison - is true if one source compares (==,!=,>,<,<=,>=) to another source.
+And - is true if both of two underlying conditions are.
+Or - is true if either of two underlying conditions are true.
+Not - is true if the underlying condition is false.
+
+[2009-03-03] Added Replace Text operator, all occurrences of an pattern are replaced
+with a value.
+
+[2009-03-02] Added RDF Extract operator, which parses rdf/xml. (This will later be
+modified to extract metadata using any23).
+
+Bug Fixes
+---------
+[SWP-48] new lines lost in select queries and text box text
+
+Changes for release 0.6.5
+=========================
+[2009-02-25] New PipeCall operator allows calling another saved pipe 
+same as using any other operator.
+[2009-02-25] New Stringify operator allows using output of some 
+operators as string input into another operator (for 
+instance using the output of one http call as a parameter 
+into another http call)
+[2009-02-25] New Text operator
+[2009-02-25] New 'mark as broken/mark as fixed' menu items to remove 
+broken pipes off the main screen (and back again when fixed)
+[2009-02-25] Improved workflow in 'save pipe' dialog.
+[2009-02-25] Improved caching of http responses
+
+
+Changes for release 0.6.4
+=========================
+Changes:
+[2009-02-18] New feature on http get to expand links. This changes relative hrefs to absolute.
+[2009-02-18] New feature on http get to set the Accept header.
+[2009-02-18] Changed fetch operators to allow string or source for location. This allows output from one fetch operator to be passed through stringify operator then as a param or path in another http request.
+[2009-02-18] Added example of calling OpenCalais web service.
+[2009-02-18] Some small bug fixes. 
+
+
+Changes for release 0.6.3
+=========================
+[2009-02-16] Fixed problem in URL Builder which was missing text input (parameter) nodes.
+[2009-02-16] Modified URL Builder not to inject '/' between path components.
+[2009-02-16] Some small bug fixes. 
+
+Changes for release 0.6.2
+=========================
+[2009-02-13] New html2xml operator 
+[2009-02-13] Caching of HTTP GET responses
+[2009-02-13] Some small bug fixes. 
+
+Changes for release 0.6.1
+=========================
+[2009-02-11] new XQuery Operator
+[2009-02-11] Some small bug fixes. 

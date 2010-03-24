@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Semantic Web Pipes: $pipe_name$</title>
+ <link href="../favicon.ico" rel="shortcut icon"/>
+
+<script src="http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js?autoCreate=false"
+            type="text/javascript"></script>
+<script type="text/javascript">
+            var exhibit;
+            
+            
+            function onLoad() {
+                var data = eval("("+document.getElementById("data-textarea").value+")");
+                
+                window.database = Exhibit.Database.create();
+                window.database.loadData(data);
+                
+                var facets = [ "<div ex:role='facet' ex:expression='.type'></div>" ];
+                for (var p in data.properties) {
+                    facets.push("<div ex:role='facet' ex:expression='." + p + "'></div>");
+                }
+                document.getElementById("facets").innerHTML = facets.join("");
+                
+                window.exhibit = Exhibit.create();
+                window.exhibit.configureFromDOM();
+            }
+        </script>
+            
+<style>
+.query_div {
+	border-top-width: 8px;
+	border-bottom-style: solid;
+	border-top-color: #00CCFF;
+	border-right-color: #00CCFF;
+	border-bottom-color: #00CCFF;
+	border-left-color: #00CCFF;
+	margin: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.results_div {
+	margin: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.query_textinput_row {
+	margin-top: 4px;
+}
+.error_messages_div {
+	font-size: small;
+	font-weight: bold;
+	color: #CC0000;
+}
+</style>
+</head>
+<body onLoad="onLoad();">
+<div class="query_div">
+    <div style="float:right">
+      <a href="http://pipes.deri.org/" title="Read more about Semantic Web Pipes">
+      <img src="../img/SWP_logo_66x50.png" height="50px" alt="Semantic Web Pipes Logo"/>
+      </a>
+    </div>
+  <h2> $pipe_name$ pipe</h2>
+  <div align="center">$query_form$</div>
+  <div class="error_messages_div">$error_messages$</div>
+</div>
+<div class="results_div">
+    <table width="100%" border="0">
+      <tr>
+        <td><h2>Results</h2></td>
+        <td align="right"><div><img src="../img/rdf_icon.gif" align="absmiddle" /> <a href="$rdf_source$">Show results as RDF/XML</a></div></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right"><div> <a href="$editor$">Show pipe in editor</a></div></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right"><div> <a href="$raw_source$">Show raw results</a></div></td>
+      </tr>
+    </table>
+  <table width="100%">
+    <tr valign="top">
+      <td ex:role="viewPanel"><div ex:role="view"></div></td>
+      <td width="25%">
+      <b>Text search</b>
+      <div ex:role="facet" ex:facetClass="TextSearch"></div>
+      <br/>
+      <div id="facets"></div>
+      </td>
+    </tr>
+  </table>
+
+  <textarea rows="15" wrap="off" id="data-textarea" name="content" style="display:none">$jsondata$</textarea> 
+
+</div>
+</body>
+</html>

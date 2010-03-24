@@ -1,0 +1,31 @@
+<pipeConfig>
+  <id>tblotw</id>
+  <name></name>
+  <syntax><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<pipe>
+   <parameters/>
+   <code>
+      <policy>
+               <source>
+                  <rdfs>
+                     <source><rdffetch format="RDF/XML"><location>http://foolme.csail.mit.edu/policy/feed1</location></rdffetch></source>
+                     <source><rdffetch format="RDF/XML"><location>http://foolme.csail.mit.edu/policy/feed2</location></rdffetch></source>
+                     <source><rdffetch format="RDF/XML"><location>http://foolme.csail.mit.edu/policy/feed3</location></rdffetch></source>
+					<source>
+					<construct>
+               			<source>
+                 		 <rdffetch format="RDF/XML">
+                     		<location>http://dbpedia.org/resource/Tim_Berners-Lee</location>
+                 			 </rdffetch>
+               				</source>
+                     <query>CONSTRUCT {&lt;http://www.w3.org/People/Berners-Lee/card#i&gt; ?p ?o.   ?s2 ?p2 &lt;http://www.w3.org/People/Berners-Lee/card#i&gt;} where   {{&lt;http://dbpedia.org/resource/Tim_Berners-Lee&gt; ?p ?o}   UNION        {?s2 ?p2 &lt;http://dbpedia.org/resource/Tim_Berners-Lee&gt;}}</query>
+           			 </construct>
+           			 </source>
+                  </rdfs>
+               </source>
+      </policy>
+   </code>
+</pipe>
+]]></syntax>
+  <password></password>
+</pipeConfig>

@@ -1,0 +1,22 @@
+<pipeConfig>
+  <id>tblotw</id>
+  <name></name>
+  <syntax><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<pipe>
+<parameters/>
+<code>
+<policy>
+<source>
+<rdfs>
+     <source><rdffetch><location>http://foolme.csail.mit.edu/policy/feed1</location></rdffetch></source>
+     <source><rdffetch><location>http://foolme.csail.mit.edu/policy/feed2</location></rdffetch></source>
+     <source><rdffetch><location>http://foolme.csail.mit.edu/policy/feed3</location></rdffetch></source>
+</rdfs>
+</source>
+</policy>
+</code>
+</pipe>
+]]></syntax>
+  <password></password>
+</pipeConfig>
+
